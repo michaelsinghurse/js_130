@@ -1,0 +1,4 @@
+# .gitignore
+
+# ignore the files in the directory created by jest
+coverage/
