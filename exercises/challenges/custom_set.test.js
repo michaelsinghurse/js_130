@@ -94,46 +94,46 @@ describe("CustomSet", () => {
 			  });
 
 	  describe("eql: sets with the same elements are equal", () => {
-			    xtest("empty sets are equal", () => {
+			    test("empty sets are equal", () => {
 						      const actual = new CustomSet().eql(new CustomSet());
 						      expect(actual).toBe(true);
 						    });
 
-			    xtest("empty set is not equal to non-empty set", () => {
+			    test("empty set is not equal to non-empty set", () => {
 						      const actual = new CustomSet().eql(new CustomSet([1, 2, 3]));
 						      expect(actual).toBe(false);
 						    });
 
-			    xtest("non-empty set is not equal to empty set", () => {
+			    test("non-empty set is not equal to empty set", () => {
 						      const actual = new CustomSet([1, 2, 3]).eql(new CustomSet());
 						      expect(actual).toBe(false);
 						    });
 
-			    xtest("sets with the same elements are equal", () => {
+			    test("sets with the same elements are equal", () => {
 						      const actual = new CustomSet([1, 2]).eql(new CustomSet([2, 1]));
 						      expect(actual).toBe(true);
 						    });
 
-			    xtest("sets with different elements are not equal", () => {
+			    test("sets with different elements are not equal", () => {
 						      const actual = new CustomSet([1, 2, 3]).eql(new CustomSet([1, 2, 4]));
 						      expect(actual).toBe(false);
 						    });
 			  });
 
 	  describe("add: unique elements can be added to a set", () => {
-			    xtest("add to empty set", () => {
+			    test("add to empty set", () => {
 						      const actual = new CustomSet().add(3);
 						      const expected = new CustomSet([3]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("add to non-empty set", () => {
+			    test("add to non-empty set", () => {
 						      const actual = new CustomSet([1, 2, 4]).add(3);
 						      const expected = new CustomSet([1, 2, 3, 4]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("adding an existing element does not change the set", () => {
+			    test("adding an existing element does not change the set", () => {
 						      const actual = new CustomSet([1, 2, 3]).add(3);
 						      const expected = new CustomSet([1, 2, 3]);
 						      expect(actual.eql(expected)).toBe(true);
@@ -141,19 +141,19 @@ describe("CustomSet", () => {
 			  });
 
 	  describe("intersection: returns a set of all shared elements", () => {
-			    xtest("intersection of two empty sets is an empty set", () => {
+			    test("intersection of two empty sets is an empty set", () => {
 						      const actual = new CustomSet().intersection(new CustomSet());
 						      const expected = new CustomSet();
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("intersection of an empty set and non-empty set is an empty set", () => {
+			    test("intersection of an empty set and non-empty set is an empty set", () => {
 						      const actual = new CustomSet().intersection(new CustomSet([3, 2, 5]));
 						      const expected = new CustomSet([]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("intersection of a non-empty set and an empty set is an empty set", () => {
+			    test("intersection of a non-empty set and an empty set is an empty set", () => {
 						      const actual = new CustomSet([1, 2, 3, 4]).intersection(
 										        new CustomSet([])
 										      );
@@ -161,7 +161,7 @@ describe("CustomSet", () => {
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("intersection of two sets with no shared elements is an empty set", () => {
+			    test("intersection of two sets with no shared elements is an empty set", () => {
 						      const actual = new CustomSet([1, 2, 3]).intersection(
 										        new CustomSet([4, 5, 6])
 										      );
@@ -169,7 +169,7 @@ describe("CustomSet", () => {
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("intersection of two sets with shared elements is a set of the shared elements", () => {
+			    test("intersection of two sets with shared elements is a set of the shared elements", () => {
 						      const actual = new CustomSet([1, 2, 3, 4]).intersection(
 										        new CustomSet([3, 2, 5])
 										      );
@@ -179,25 +179,25 @@ describe("CustomSet", () => {
 			  });
 
 	  describe("difference of a set is a set of all elements that are only in the first set", () => {
-			    xtest("difference of two empty sets is an empty set", () => {
+			    test("difference of two empty sets is an empty set", () => {
 						      const actual = new CustomSet().difference(new CustomSet());
 						      const expected = new CustomSet();
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("difference of empty set and non-empty set is an empty set", () => {
+			    test("difference of empty set and non-empty set is an empty set", () => {
 						      const actual = new CustomSet().difference(new CustomSet([3, 2, 5]));
 						      const expected = new CustomSet();
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("difference of a non-empty set and an empty set is the non-empty set", () => {
+			    test("difference of a non-empty set and an empty set is the non-empty set", () => {
 						      const actual = new CustomSet([1, 2, 3, 4]).difference(new CustomSet());
 						      const expected = new CustomSet([1, 2, 3, 4]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("difference of two non-empty sets is a set of elements that are only in the first set", () => {
+			    test("difference of two non-empty sets is a set of elements that are only in the first set", () => {
 						      const actual = new CustomSet([3, 2, 1]).difference(new CustomSet([2, 4]));
 						      const expected = new CustomSet([1, 3]);
 						      expect(actual.eql(expected)).toBe(true);
@@ -205,25 +205,25 @@ describe("CustomSet", () => {
 			  });
 
 	  describe("union: returns a set of all elements in either set", () => {
-			    xtest("union of empty sets is an empty set", () => {
+			    test("union of empty sets is an empty set", () => {
 						      const actual = new CustomSet().union(new CustomSet());
 						      const expected = new CustomSet();
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("union of an empty set and non-empty set is the non-empty set", () => {
+			    test("union of an empty set and non-empty set is the non-empty set", () => {
 						      const actual = new CustomSet().union(new CustomSet([2]));
 						      const expected = new CustomSet([2]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("union of a non-empty set and empty set is the non-empty set", () => {
+			    test("union of a non-empty set and empty set is the non-empty set", () => {
 						      const actual = new CustomSet([1, 3]).union(new CustomSet());
 						      const expected = new CustomSet([1, 3]);
 						      expect(actual.eql(expected)).toBe(true);
 						    });
 
-			    xtest("union of non-empty sets contains all unique elements", () => {
+			    test("union of non-empty sets contains all unique elements", () => {
 						      const actual = new CustomSet([1, 3]).union(new CustomSet([2, 3]));
 						      const expected = new CustomSet([1, 2, 3]);
 						      expect(actual.eql(expected)).toBe(true);
